@@ -7,20 +7,18 @@ PORT="4242"
 
 echo "Cliente HMTP"
 
-<<<<<<< HEAD
 echo "(1) SEND - Enviando el Handshake"
 
 echo "GREEN_POWA $IP_LOCAL" | nc $IP_SERVER $PORT
 
 echo "(2) LISTEN - Escuchando confirmación"
 
-=======
 echo "(1) SEND - Enviando el handshake"
 
 echo "GREEN_POWA $IP_LOCAL" | nc $IP_SERVER $PORT
 
 echo "(2) LISTEN - Escuchando confirmación"
->>>>>>> bfbe704 (Nueva version)
+
 MSG=`nc -l $PORT`
 
 if [ "$MSG" != "OK_HMTP" ]
@@ -44,10 +42,9 @@ MSG=`nc -l $PORT`
 if [ "$MSG" != "OK_FILE_NAME" ]
 then 
 	echo "ERROR 2: Nombre de archivo enviado incorrectamente"
-<<<<<<< HEAD
+
 	echo "Mensaje de error: $MSG"
-=======
->>>>>>> bfbe704 (Nueva version)
+
 	exit 2 
 fi
 
@@ -65,11 +62,10 @@ then
 	exit 3
 fi
 
-<<<<<<< HEAD
 echo "Fin del envío"
 
 exit 0
-=======
+
 echo "(13) SEND - MD5 de los datos" 
 
 DATA_MD5=`cat memes/$FILE_NAME | md5sum | cut -d " " -f 1`
@@ -91,5 +87,3 @@ echo "Fin del envío"
 
 exit 0
 
-
->>>>>>> bfbe704 (Nueva version)

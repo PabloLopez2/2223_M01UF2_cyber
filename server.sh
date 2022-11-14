@@ -5,10 +5,8 @@ PORT="4242"
 echo "Servidor HMTP"
 echo "(0) LISTEN - Levantando el servidor"
 
-<<<<<<< HEAD
-=======
 PORT="4242"
->>>>>>> bfbe704 (Nueva version)
+
 MSG=`nc -l $PORT`
 
 HANDSHAKE=`echo $MSG | cut -d " " -f 1`
@@ -21,11 +19,8 @@ then
 	echo "KO_HMTP" | nc $IP_CLIENT $PORT
 	exit 1
 fi  
-<<<<<<< HEAD
-=======
 
 echo "OK_HMTP" | nc $IP_CLIENT $PORT
->>>>>>> bfbe704 (Nueva version)
 
 echo "OK_HMTP" | nc $IP_CLIENT $PORT
 
@@ -64,8 +59,6 @@ echo "(11) SEND - Escuchamos confirmación datos archivo"
 
 echo "OK_DATA_RCPT" | nc $IP_CLIENT $PORT
 
-<<<<<<< HEAD
-=======
 MSG=`nc -l $PORT` 
 
 PREFIX=`echo $MSG | cut -d " " -f 1`
@@ -122,7 +115,6 @@ fi
 
 echo "OK_DATA_MD5" | nc $IP_CLIENT $PORT
 
->>>>>>> bfbe704 (Nueva version)
 echo "Fin de la recepción"
 
 exit 0
