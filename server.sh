@@ -11,14 +11,24 @@ MSG=`nc -l $PORT`
 
 HANDSHAKE=`echo $MSG | cut -d " " -f 1`
 IP_CLIENT=`echo $MSG | cut -d " " -f 2`
+IP_CLIENT_MD5=`echo $MSG | cut -d " " -f 3`
+COMPROBACION_MD5=`echo $IP_CLIENT | md5sum | cut -d " " -f 1`
+
 
 echo "(3) SEND - Confirmación Handshake"
+
+if [ "$IP_CLIENT_MD5" != "$MD5_IP" ]
+then 
+	echo "ERROR 1: Ip mal formada"
+	exit 1
+fi
 
 if [ "$HANDSHAKE" != "GREEN_POWA" ]
 then
 	echo "KO_HMTP" | nc $IP_CLIENT $PORT
 	exit 1
 fi  
+
 
 echo "OK_HMTP" | nc $IP_CLIENT $PORT
 

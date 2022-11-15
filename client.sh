@@ -1,21 +1,17 @@
 #!/bin/bash
 
 IP_SERVER="localhost"
-IP_LOCAL="127.0.0.1"
+IP_LOCAL="127.0.0.1" 
 
 PORT="4242"
 
 echo "Cliente HMTP"
 
-echo "(1) SEND - Enviando el Handshake"
-
-echo "GREEN_POWA $IP_LOCAL" | nc $IP_SERVER $PORT
-
-echo "(2) LISTEN - Escuchando confirmación"
-
 echo "(1) SEND - Enviando el handshake"
 
-echo "GREEN_POWA $IP_LOCAL" | nc $IP_SERVER $PORT
+MD5_IP=`echo $IP_LOCAL | md5sum | cut -d " " -f 1`
+
+echo "GREEN_POWA $IP_LOCAL $MD5_IP" | nc $IP_SERVER $PORT
 
 echo "(2) LISTEN - Escuchando confirmación"
 
@@ -86,4 +82,3 @@ fi
 echo "Fin del envío"
 
 exit 0
-
