@@ -16,8 +16,6 @@ IP_LOCAL=`ip a | grep inet | grep enp0s3 | sed "s/^ *//g" | cut -d " " -f 2 | cu
 
 PORT="4242"
 
-echo "La IP local es: $IP_LOCAL"
-
 MD5_IP=`echo $IP_LOCAL | md5sum | cut -d " " -f 1`
 
 
@@ -28,6 +26,8 @@ then
 fi
 
 echo "Cliente HMTP"
+
+echo "La IP local es: $IP_LOCAL"
 
 echo "(1) ENVIANDO EL SALUDO"
 

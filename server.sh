@@ -21,8 +21,8 @@ MD5_IP=`echo $IP_CLIENTE | md5sum | cut -d " " -f 1`
 echo "(3) ENVIANDO CONFIRMACION"
 if [ "$MD5_IP" != "$MD5_CLIENTE" ]
 then
-echo "ERROR 1: IP errónea" 
-exit 1
+	echo "ERROR 1: IP errónea" 
+	exit 1
 fi
 
 if [ "$HANDSHAKE" != "GREEN_POWA" ]
@@ -46,7 +46,7 @@ fi
 echo "OK_FILE_COUNT" | nc $IP_CLIENTE $PORT
 echo ""
 
-echo "(7) ENVIANDO CONFIRMACION DE CONTEO"
+echo "(7) ENVIANDO CONFIRMACION DE CONTAR LOS ARCHIVOS"
 for ((i=0; i<=$FILE_COUNT-1; i++))
 do
 echo "(8) ESCUCHANDO"
@@ -79,7 +79,7 @@ echo "(12) ESCUCHAMOS ARCHIVO"
 nc -l $PORT > inbox/$FILE_NAME
 
 DATA_MD5=`cat inbox/$FILE_NAME | md5sum | cut -d " " -f 1`
-echo "(15) ENVIAR CONFIRMCION" 
+echo "(15) ENVIAR CONFIRMACION" 
 
 echo "OK_DATA_RCPT" | nc $IP_CLIENTE $PORT
 
